@@ -1,3 +1,6 @@
+# partly from https://github.com/PCextreme/logstash-grok-patterns/blob/master/auth
+#
+# ssh
 SSH_PUB_LOGIN %{SYSLOGBASE} Accepted publickey for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
 SSH_PUB_LOGIN_S Accepted publickey for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
 SSH_PASSWORD_LOGIN %{SYSLOGBASE} Accepted password for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
@@ -8,7 +11,9 @@ SSH_FAILED_AUTH_S authentication failure; logname= uid=0 euid=0 tty=ssh ruser= r
 SSH_DISCONNECT %{SYSLOGBASE} Received disconnect from %{IPORHOST:remote}: %{BASE10NUM:code}: %{GREEDYDATA:reason}
 SSH_DISCONNECT_S Received disconnect from %{IPORHOST:remote}: %{BASE10NUM:code}: %{GREEDYDATA:reason}
 SSH_SNOOPY %{SYSLOGTIMESTAMP:timestamp} (?:%{SYSLOGFACILITY} )?%{SYSLOGHOST:logsource} snoopy(?:\[%{POSINT:pid}\])?: \[uid:%{INT:uid:int} sid:%{INT:sid:int} tty:%{DATA:tty} cwd:%{DATA:cwd} filename:%{DATA:filename}\]: %{GREEDYDATA:command}
+# auth
 AUTH_LOG_LINE %{SYSLOGBASE} %{GREEDYDATA:logline}
+# sudo
 SUDO_LOGLINE session opened for user %{USERNAME:userto} by %{USERNAME:username}
 SUDO_PROG %{USERNAME:username} : TTY=%{GREEDYDATA:tty} ; PWD=%{GREEDYDATA:pwd} ; USER=%{USERNAME:userto} ; COMMAND=%{GREEDYDATA:command}$
 SUDO_CLOSE session closed for user %{USERNAME:username}
