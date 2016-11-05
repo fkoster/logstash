@@ -3,6 +3,7 @@
 # ssh
 SSH_PUB_LOGIN %{SYSLOGBASE} Accepted publickey for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
 SSH_PUB_LOGIN_S Accepted publickey for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
+SSH_OPEN_SESSION session opened for user %{USERNAME:username} by \(uid=%{INT:uid:int})
 SSH_PASSWORD_LOGIN %{SYSLOGBASE} Accepted password for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
 SSH_PASSWORD_LOGIN_S Accepted password for %{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
 SSH_FAILED_LOGIN %{SYSLOGBASE} Failed password for (invalid user |)%{USERNAME:username} from %{IPORHOST:remote} port %{BASE10NUM:port:int} %{WORD:protocol}
