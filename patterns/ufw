@@ -1,0 +1,2 @@
+UFWLINE %{SYSLOGTIMESTAMP:ufw_timestamp} %{SYSLOGHOST:ufw_hostname} %{DATA:ufw_program}(?:\[%{POSINT:ufw_pid}\])?: %{GREEDYDATA:ufw_message}
+UFWLINE2 \[%{DATA}\] \[UFW %{WORD:ufw_action}\] IN=%{DATA:ufw_interface} OUT= MAC=%{DATA:ufw_mac} SRC=%{IP:ufw_src_ip} DST=%{IP:ufw_dest_ip} %{GREEDYDATA:ufw_tcp_opts} PROTO=%{WORD:ufw_protocol} SPT=%{INT:ufw_src_port} DPT=%{INT:ufw_dst_port} %{GREEDYDATA:ufw_tcp_opts}
